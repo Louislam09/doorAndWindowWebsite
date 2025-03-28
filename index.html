@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puertas y Ventanas ROSARIO - Economía y Eficiencia</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a2342;
+            --secondary-color: #3498db;
+            --accent-color: #ff6b6b;
+            --background-color: #f4f6f9;
+            --text-color: #2c3e50;
+            --gradient-primary: linear-gradient(135deg, #0a2342, #1a4b8d);
+            --gradient-secondary: linear-gradient(135deg, rgba(10, 35, 66, 0.8), rgba(52, 152, 219, 0.8));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            font-weight: 400;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 700px;
+            padding: 6rem 0;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/api/placeholder/1600/900');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.5);
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-secondary);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            flex: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 14px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background-color: darken(#ff6b6b, 10%);
+        }
+
+        .services {
+            background-color: white;
+            padding: 6rem 0;
+        }
+
+        .services h2 {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .services h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background-color: var(--background-color);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card i {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover i {
+            transform: rotate(360deg);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .contact {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 8px;
+        }
+
+        .contact-info a i {
+            font-size: 1.8rem;
+            color: #25D366;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .contact-info a:hover i {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        footer {
+            background-color: #1a1a2e;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+
+            .hero,
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                margin-top: 15px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="./logo.png" alt="Puertas y Ventanas ROSARIO Logo">
+                <h1>Puertas y Ventanas ROSARIO</h1>
+            </div>
+            <nav>
+                <a href="#services" class="cta-button">Nuestros Servicios</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Transformando Espacios con Estilo y Funcionalidad</h1>
+            <p>Soluciones premium en puertas y ventanas de aluminio. Diseñamos cada detalle para combinar elegancia,
+                eficiencia energética y durabilidad en tus espacios.</p>
+            <a href="#contact" class="cta-button">Contáctanos Ahora</a>
+        </div>
+    </section>
+
+    <section id="services" class="services container">
+        <h2>Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-door-open"></i>
+                <h3>Puertas en Aluminio</h3>
+                <p>Diseños modernos y personalizados que transforman la entrada de tu hogar o negocio.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-window-maximize"></i>
+                <h3>Ventanas P-40</h3>
+                <p>Tecnología de punta para máxima eficiencia térmica y acústica, reduciendo consumo energético.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-shower"></i>
+                <h3>Mamparas</h3>
+                <p>Soluciones elegantes que maximizan la luminosidad y crean espacios modernos.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-home"></i>
+                <h3>Puertas Perimetrales</h3>
+                <p>Seguridad profesional y diseño contemporáneo para proteger lo que más valoras.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-wind"></i>
+                <h3>Louvers en Aluminio</h3>
+                <p>Control inteligente de luz y ventilación con diseño minimalista y funcional.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-expand-arrows-alt"></i>
+                <h3>Paños Fijos</h3>
+                <p>Soluciones arquitectónicas que conectan interiores y exteriores con máxima luminosidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contáctanos</h2>
+            <p>Estamos listos para hacer realidad tu proyecto en Santo Domingo</p>
+            <div class="contact-info">
+                <a href="https://wa.me/18298487962" target="_blank"><i class="fab fa-whatsapp"></i> 829-848-7962</a>
+                <a href="https://wa.me/18097044976" target="_blank"><i class="fab fa-whatsapp"></i> 809-704-4976</a>
+                <a href="https://wa.me/18097219413" target="_blank"><i class="fab fa-whatsapp"></i> 809-721-9413</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Puertas y Ventanas ROSARIO. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div class="whatsapp-float">
+        <a href="https://wa.me/18097044976" target="_blank" aria-label="Contáctanos por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: white;
+            text-decoration: none;
+        }
+
+        .whatsapp-float i {
+            font-size: 30px;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-float i {
+                font-size: 25px;
+            }
+        }
+    </style>
+</body>
+
+</html>
